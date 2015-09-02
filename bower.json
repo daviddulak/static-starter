@@ -1,0 +1,13 @@
+{
+  "name": "Static Starter",
+  "version": "1.0.0",
+  "homepage": "http://daviddulak.com",
+  "authors": [
+    "David Dulak <daviddulak@me.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "velocity": "1.2.2",
+    "jquery": "2.1.3"
+  }
+}
