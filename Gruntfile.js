@@ -80,8 +80,20 @@ module.exports = function(grunt) {
     },
     copy: {
       dist: {
-        src: 'index.html',
-        dest: 'dist/index.html',
+        expand: true,
+        src: [
+          'robots.txt',
+          'humans.txt',
+          '404.html',
+          'tile.png',
+          'tile-wide.png',
+          'apple-touch-icon.png',
+          'favicon.ico',
+          'crossdomain.xml',
+          'browserconfig.xml',
+          'index.html'
+        ],
+        dest: 'dist',
       }
     },
     useminPrepare: {
