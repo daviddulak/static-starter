@@ -1,14 +1,28 @@
 # static-starter
-Starter for a static web project with Grunt, Less, and HTML5 Boilerplate
+Starter for a static web project with Grunt, Less, and HTML5 Boilerplate.
+This assumes Node.js, global grunt-cli, global bower, and imagemagick
 
 
 # First time setup
-./prepare.sh
+```bash
+$ ./prepare.sh
+```
+
+
+# Icon creation
+First edit icon_source.png and then run
+```bash
+$ ./icongen.sh
+```
 
 
 # Development
-grunt
+```bash
+$ grunt
+```
 
 
 # Distribution
-grunt build
+```bash
+$ grunt build
+```
