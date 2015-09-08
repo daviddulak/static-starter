@@ -3,26 +3,26 @@ Starter for a static web project with Grunt, Less, and HTML5 Boilerplate.
 This assumes Node.js, global grunt-cli, global bower, and imagemagick
 
 
-# First time setup
+__First time setup__
 ```bash
 $ ./prepare.sh
 ```
 
 
-# Icon creation
+__Icon creation__
 First edit icon_source.png and then run
 ```bash
 $ ./icongen.sh
 ```
 
 
-# Development
+__Development__
 ```bash
 $ grunt
 ```
 
 
-# Distribution
+__Distribution__
 ```bash
 $ grunt build
 ```
