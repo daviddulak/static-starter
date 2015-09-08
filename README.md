@@ -10,7 +10,7 @@ $ ./prepare.sh
 
 
 __Icon creation__
-First edit icon_source.png and then run
+- edit icon_source.png and then run
 ```bash
 $ ./icongen.sh
 ```
