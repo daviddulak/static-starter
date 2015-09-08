@@ -46,14 +46,14 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'src/img/',
-          src: ['**/*.{png,jpg,jpeg,gif}'],
+          src: ['**/*.{png,jpg,jpeg,gif,svg}'],
           dest: 'dist/img/'
         }]
       }
     },
     modernizr: {
       devFile: 'src/js/modernizr.js',
-      outputFile: 'dist/js/modernizr.min.js',
+      outputFile: 'dist/js/modernizr.js',
       files: [
         'src/css/**/*.less',
         'src/js/**/*.js',
@@ -115,8 +115,15 @@ module.exports = function(grunt) {
             ];
           }
         }
+      },
+      heroku: {
+        options: {
+          port: process.env.PORT || 8080,
+          base: 'dist',
+          keepalive: true
+        }
       }
-    },
+    }
   });
 
   grunt.registerTask('dev', ['less:dev', 'connect', 'watch']);
@@ -131,4 +138,5 @@ module.exports = function(grunt) {
     'modernizr'
   ]);
   grunt.registerTask('default', ['dev']);
+  grunt.registerTask('heroku', ['build', 'connect:heroku']);
 };
