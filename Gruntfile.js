@@ -6,7 +6,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     watch: {
       less: {
-        files: ['css/**/*.less'],
+        files: ['src/css/**/*.less'],
         tasks: ['less:dev'],
         options: {
           spawn: false,
@@ -14,7 +14,7 @@ module.exports = function(grunt) {
         }
       },
       js: {
-        files: ['js/**/*.js'],
+        files: ['src/js/**/*.js'],
         options: {
           spawn: false,
           livereload: true
@@ -24,7 +24,7 @@ module.exports = function(grunt) {
     less: {
       dev: {
         files: {
-          'css/app.css': 'css/app.less'
+          'src/css/app.css': 'src/css/app.less'
         },
         options: {
           outputStyle: 'expanded',
@@ -33,7 +33,7 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'dist/css/app.css': 'css/app.less'
+          'dist/css/app.css': 'src/css/app.less'
         },
         options: {
           outputStyle: 'compressed'
@@ -44,20 +44,20 @@ module.exports = function(grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: 'img/',
+          cwd: 'src/img/',
           src: ['**/*.{png,jpg,jpeg,gif}'],
           dest: 'dist/img/'
         }]
       }
     },
     modernizr: {
-      devFile: 'js/modernizr.js',
+      devFile: 'src/js/modernizr.js',
       outputFile: 'dist/js/modernizr.min.js',
       files: [
-        'css/**/*.less',
-        'js/**/*.js',
-        '*.html',
-        'img/**/*.*',
+        'src/css/**/*.less',
+        'src/js/**/*.js',
+        'src/*.html',
+        'src/img/**/*.*',
         '!./dist/js/modernizr.min.js'
       ],
       extra: {
@@ -82,38 +82,35 @@ module.exports = function(grunt) {
       dist: {
         expand: true,
         src: [
-          'robots.txt',
-          'humans.txt',
-          '404.html',
-          'tile.png',
-          'tile-wide.png',
-          'apple-touch-icon.png',
-          'favicon.ico',
-          'crossdomain.xml',
-          'browserconfig.xml',
-          'index.html'
+          'src/*'
         ],
-        dest: 'dist',
+        dest: 'dist/',
+        flatten: true,
+        filter: 'isFile'
       }
     },
     useminPrepare: {
       html: 'dist/index.html',
       options: {
-        root: './'
+        root: 'src/'
       }
     },
     usemin: {
       html: 'dist/index.html'
     },
     connect: {
+      options: {
+        base: 'src'
+      },
       dev: {
         options: {
           port: 3000,
-          open: true,
+          open: false,
+          base: 'src',
           middleware: function(connect, opts) {
             return [
               require('connect-livereload')(),
-              connect.static(require('path').resolve(__dirname))
+              connect.static(require('path').resolve(opts.base))
             ];
           }
         }
